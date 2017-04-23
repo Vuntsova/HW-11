@@ -1,0 +1,38 @@
+[
+	{
+		"partial": " ...  is the capital of Bulgaria.",
+		"answer": "Sofia"
+	},
+	{
+		"partial": "Budapest is the capital of  ... .",
+		"answer": "Hungary"
+	},
+	{
+		"partial": " ...  is the capital of Germany.",
+		"answer": "Berlin"
+	},
+	{
+		"partial": "Belgrade is the capital  ... .",
+		"answer": "Serbia"
+	},
+	{
+		"partial": " ...  is the capital of Switzerland.",
+		"answer": "Bern"
+	},
+	{
+		"partial": "Hanoi is the capital of  ... .",
+		"answer": "Vietnam"
+	},
+	{
+		"partial": " ...  is the capital of Zimbabwe.",
+		"answer": "Harare"
+	},
+	{
+		"partial": "Kiev is the capital of  ... .",
+		"answer": "Ukraine"
+	},
+	{
+		"partial": " ...  is the capital of Romania.",
+		"answer": "Bucharest"
+	}
+]
