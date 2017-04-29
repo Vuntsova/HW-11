@@ -1,6 +1,6 @@
 [
 	{
-		"partial": " ...  is the capital of Bulgaria.",
+		"partial": " ...  is the capital of Bulgaria",
 		"answer": "Sofia"
 	},
 	{
@@ -34,5 +34,9 @@
 	{
 		"partial": " ...  is the capital of Romania.",
 		"answer": "Bucharest"
+	},
+	{
+		"partial": " ...  City is the capital of Mexico.",
+		"answer": "Mexico"
 	}
 ]

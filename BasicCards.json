@@ -1,18 +1,34 @@
 [
 	{
-		"front": "George ... was the first president of the USA.",
-		"back": "Washington"
+		"front": "Inside which HTML element do we put the JavaScript?",
+		"back": "<script>"
 	},
 	{
-		"front": "The .. was an agreement signed by British and American leaders that ",
-		"back": "Treaty of Paris"
+		"front": "How do you call a function named \"myFunction\"?",
+		"back": "myFunction()"
 	},
 	{
-		"front": "The ... were an English religious aent who hoped to 'purify' the",
-		"back": "Puritans"
+		"front": "How do you round the number 7.25, to the nearest integer?",
+		"back": "Math.round(7.25)"
 	},
 	{
-		"front": "In 1807, the ... Act prohibited all foreign trade.",
-		"back": "Embago"
+		"front": "How do you find the number with the highest value of x and y?",
+		"back": "Math.max(x, y)"
+	},
+	{
+		"front": "JavaScript is the same as Java?",
+		"back": "No"
+	},
+	{
+		"front": "Which event occurs when the user clicks on an HTML element?",
+		"back": "onclick"
+	},
+	{
+		"front": "Is JavaScript case-sensitive?",
+		"back": "Yes"
+	},
+	{
+		"front": "",
+		"back": ""
 	}
 ]
