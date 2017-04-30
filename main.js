@@ -9,17 +9,55 @@ var fs = require("fs");
 // console.log(cardData);
 //Asking the user which game they want to play
 var cardArray = [];
+// Current Question
+var currentQuestion = 0;
+// Correct Answers
+var correctAnswers = 0;
+// Incorrect Answers
+var incorrectAnswers = 0;
 
-function ask(front,back) {
-    for(var i = 0; i < cardData.length; ++i) {
+
+    for(var i = 0; i < cardData.length; i++) {
         var question = cardData[i].front;
-        var answer = cardData[i].back;
-        console.log(question);
-        //if the name is what we are looking for return it
-        if(answer === back)
-            return cardData[i];
+        var answers = cardData[i].back;
+        cardArray.push(question);
+        // console.log(question);
+        // console.log(answers);
     }
+function ask() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: cardArray + '\nAnswer: ',
+            name: "userAnswer"
+
+        }
+    ]).then(function (answers) {
+        console.log("\n");
+        if (answers.userAnswer === answers) {
+            console.log("Correct answer!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect answer!");
+            incorrectAnswers++;
+        }
+
+        // Show the correct answer
+        console.log('Correct answer is: ' + answers);
+        console.log("-------------------------------------\n");
+        console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+
+
+        // Next question
+        if (currentQuestion < cardData.length - 1) {
+            currentQuestion++;
+            ask();
+        }
+
+
+})
 }
+
 
 function askUser(){
     inquirer.prompt([
