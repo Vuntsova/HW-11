@@ -16,42 +16,44 @@ var correctAnswers = 0;
 // Incorrect Answers
 var incorrectAnswers = 0;
 
+for(var i= 0;i < cardData.length; i++){
+var question = cardData[i].front;
+var answer = cardData[i].back;
+console.log(cardData[i].back);
+}
 
-    for(var i = 0; i < cardData.length; i++) {
-        var question = cardData[i].front;
-        var answers = cardData[i].back;
-        cardArray.push(question);
-        // console.log(question);
-        // console.log(answers);
-    }
 function ask() {
     inquirer.prompt([
         {
             type: "input",
-            message: cardArray[i] + '\nAnswer: ',
+            message: question+ '\nAnswer: ',
             name: "userAnswer"
 
         }
     ]).then(function (answers) {
         console.log("\n");
-        if (answers.userAnswer === answers) {
+        if (answers.userAnswer === answer) {
             console.log("Correct answer!");
             correctAnswers++;
         } else {
             console.log("Incorrect answer!");
             incorrectAnswers++;
+            // Show the correct answer
+            console.log('Correct answer is: ' + answer);
+            console.log("-------------------------------------\n");
         }
 
-        // Show the correct answer
-        console.log('Correct answer is: ' + answers);
-        console.log("-------------------------------------\n");
-        console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+
+
 
 
         // Next question
         if (currentQuestion < cardData.length - 1) {
             currentQuestion++;
             ask();
+        }else {
+            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            askUser();
         }
 
 
@@ -173,3 +175,4 @@ function CreateClozeCard(){
 
 
 // CreateClozeCard();
+
