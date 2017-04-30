@@ -9,15 +9,17 @@ var fs = require("fs");
 // console.log(cardData);
 //Asking the user which game they want to play
 var cardArray = [];
-function ask() {
-    for (var i = 0; i < cardData.length; i++) {
-        currentCard = new base(cardData[i].front, cardData[i].back);
-        // cardArray.push(currentCard);
-        return currentCard;
+
+function ask(front,back) {
+    for(var i = 0; i < cardData.length; ++i) {
+        var question = cardData[i].front;
+        var answer = cardData[i].back;
+        console.log(question);
+        //if the name is what we are looking for return it
+        if(answer === back)
+            return cardData[i];
     }
 }
-
-ask();
 
 function askUser(){
     inquirer.prompt([
