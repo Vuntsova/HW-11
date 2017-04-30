@@ -28,7 +28,7 @@ function ask() {
     inquirer.prompt([
         {
             type: "input",
-            message: cardArray + '\nAnswer: ',
+            message: cardArray[i] + '\nAnswer: ',
             name: "userAnswer"
 
         }
