@@ -17,7 +17,7 @@
 	},
 	{
 		"front": "JavaScript is the same as Java?",
-		"back": "No"
+		"back": "no"
 	},
 	{
 		"front": "Which event occurs when the user clicks on an HTML element?",
@@ -25,6 +25,6 @@
 	},
 	{
 		"front": "Is JavaScript case-sensitive?",
-		"back": "Yes"
+		"back": "yes"
 	}
 ]
