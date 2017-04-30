@@ -7,7 +7,7 @@ var cloze = require('./cloze.js');
 var cardData = require("./BasicCards.json");
 var fs = require("fs");
 // console.log(cardData);
-//Asking the user which game they want to play
+
 var cardArray = [];
 // Current Question
 var currentQuestion = 0;
@@ -15,52 +15,10 @@ var currentQuestion = 0;
 var correctAnswers = 0;
 // Incorrect Answers
 var incorrectAnswers = 0;
-
-for(var i= 0;i < cardData.length; i++){
-var question = cardData[i].front;
-var answer = cardData[i].back;
-console.log(cardData[i].back);
-}
-
-function ask() {
-    inquirer.prompt([
-        {
-            type: "input",
-            message: question+ '\nAnswer: ',
-            name: "userAnswer"
-
-        }
-    ]).then(function (answers) {
-        console.log("\n");
-        if (answers.userAnswer === answer) {
-            console.log("Correct answer!");
-            correctAnswers++;
-        } else {
-            console.log("Incorrect answer!");
-            incorrectAnswers++;
-            // Show the correct answer
-            console.log('Correct answer is: ' + answer);
-            console.log("-------------------------------------\n");
-        }
+// console.log(cardData.length);
 
 
-
-
-
-        // Next question
-        if (currentQuestion < cardData.length - 1) {
-            currentQuestion++;
-            ask();
-        }else {
-            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
-            askUser();
-        }
-
-
-})
-}
-
-
+//Asking the user which game they want to play
 function askUser(){
     inquirer.prompt([
         {
@@ -73,7 +31,7 @@ function askUser(){
         .then(function(answer){
             //If the users choice is basic....
             if(answer.choice === 'create a question'){
-                CreateBasicCard();
+                CreateClozeCard();
             }
             // If users answer is cloze.......
             else if(answer.choice === 'play a game'){
@@ -83,37 +41,7 @@ function askUser(){
 }
 askUser();
 
-function CreateBasicCard(){
-    inquirer.prompt([{
-        type: "input",
-        name: "frontSide",
-        message: "What is the question you want to ask?"
-    },{
-        type: "input",
-        name: "backSide",
-        message: "What is the answer to the question?"
-    }
-    ]).then(function (inputs) {
-        var card = new base(inputs.frontSide, inputs.backSide);
-        cardData.push(card);
-
-        var newCardData = JSON.stringify(cardData,null, "\t");
-        fs.writeFile('./BasicCards.json',newCardData,function (err) {
-            if(err)throw err;
-            console.log("Done!");
-        })
-
-    })
-}
-
-var cardDataCloze = require("./clozecards.json");
-
-
-
-
-
-
-
+//Creating a (...) question and pushing it to clozeCards.json
 function ClozeCard(fullText,answer) {
     var clozePositions = clozeDelete(fullText,answer);
 
@@ -147,7 +75,7 @@ function CreateClozeCard(){
     inquirer.prompt([{
         type: "input",
         name: "fullText",
-        message: "What is the question you want to create?"
+        message: "What is the question you want to create?(Please include the right answer in the question.)"
     },{
         type: "input",
         name: "answer",
@@ -169,10 +97,72 @@ function CreateClozeCard(){
     })
 }
 
+//Creating a function for quiz
+
+for(var i = 0;i < cardData.length; i++){
+var question = cardData[i].front;
+var answer = cardData[i].back;
+// console.log(cardData[i].back);
+}
+
+function ask() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: question+ '\nAnswer: ',
+            name: "userAnswer"
+
+        }
+    ]).then(function (answers) {
+        console.log("\n");
+        if (answers.userAnswer === answer) {
+            console.log("Correct answer!");
+            correctAnswers++;
+        } else {
+            console.log("Incorrect answer!");
+            incorrectAnswers++;
+            // Show the correct answer
+            console.log('Correct answer is: ' + answer);
+            console.log("-------------------------------------\n");
+        }
+
+        // Next question
+        if (currentQuestion < cardData.length - 1) {
+            currentQuestion++;
+            ask();
+        }else {
+            //Game over and start from beginning
+            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            askUser();
+        }
 
 
+})
+}
 
+//This is a function that creates basic cards and push them to BasicCards.json
 
+function CreateBasicCard(){
+    inquirer.prompt([{
+        type: "input",
+        name: "frontSide",
+        message: "What is the question you want to ask?"
+    },{
+        type: "input",
+        name: "backSide",
+        message: "What is the answer to the question?"
+    }
+    ]).then(function (inputs) {
+        var card = new base(inputs.frontSide, inputs.backSide);
+        cardData.push(card);
 
-// CreateClozeCard();
+        var newCardData = JSON.stringify(cardData,null, "\t");
+        fs.writeFile('./BasicCards.json',newCardData,function (err) {
+            if(err)throw err;
+            console.log("Done!");
+        })
 
+    })
+}
+
+var cardDataCloze = require("./clozeCards.json");
