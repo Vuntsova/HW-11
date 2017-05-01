@@ -129,7 +129,7 @@ function ask() {
             incorrectAnswers++;
             // Show the correct answer
             console.log('Correct answer is: ' + cardArray[index].back);
-            console.log("-------------------------------------\n");
+            console.log("<><><><><><><><><><><><><><>\n");
         }
 
         // Next question
@@ -172,18 +172,3 @@ function CreateBasicCard(){
 }
 
 var cardDataCloze = require("./clozeCards.json");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// CreateClozeCard();
