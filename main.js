@@ -121,14 +121,12 @@ function ask() {
             console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
             console.log(index);
             correctAnswers++;
-            index++;
         } else {
             console.log("Incorrect answer!");
             console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
             console.log(index);
 
             incorrectAnswers++;
-            index++;
             // Show the correct answer
             console.log('Correct answer is: ' + cardArray[index].back);
             console.log("-------------------------------------\n");
