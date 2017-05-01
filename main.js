@@ -118,13 +118,13 @@ function ask() {
         console.log("\n");
         if (answers.userAnswer === cardArray[index].back) {
             console.log("Correct answer!");
-            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
-            console.log(index);
+            // console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            // // console.log(index);
             correctAnswers++;
         } else {
             console.log("Incorrect answer!");
-            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
-            console.log(index);
+            // console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            // // console.log(index);
 
             incorrectAnswers++;
             // Show the correct answer
