@@ -5,17 +5,19 @@ var inquirer = require("inquirer");
 var base = require('./base.js');
 var cloze = require('./cloze.js');
 var cardData = require("./BasicCards.json");
+var clozeData = require("./BasicCards.json");
 var fs = require("fs");
 // console.log(cardData);
 
 var cardArray = [];
 // Current Question
-var currentQuestion = 0;
+var index = 0;
 // Correct Answers
 var correctAnswers = 0;
 // Incorrect Answers
 var incorrectAnswers = 0;
 // console.log(cardData.length);
+// console.log(cardArray);
 
 
 //Asking the user which game they want to play
@@ -99,36 +101,43 @@ function CreateClozeCard(){
 
 //Creating a function for quiz
 
-for(var i = 0;i < cardData.length; i++){
-var question = cardData[i].front;
-var answer = cardData[i].back;
-// console.log(cardData[i].back);
+for (var i = 0; i < cardData.length; i++) {
+    var newCard = new base(cardData[index].front, cardData[index].back);
+    cardArray.push(newCard);
 }
+// console.log(newCard);
 
 function ask() {
     inquirer.prompt([
         {
             type: "input",
-            message: question+ '\nAnswer: ',
+            message: cardArray[index].front + '\nAnswer: ',
             name: "userAnswer"
 
         }
     ]).then(function (answers) {
         console.log("\n");
-        if (answers.userAnswer === answer) {
+        if (answers.userAnswer === cardArray[index].back) {
             console.log("Correct answer!");
+            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            console.log(index);
+            index++;
             correctAnswers++;
         } else {
             console.log("Incorrect answer!");
+            console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
+            console.log(index);
+
             incorrectAnswers++;
+            index++;
             // Show the correct answer
-            console.log('Correct answer is: ' + answer);
+            console.log('Correct answer is: ' + cardArray[index].back);
             console.log("-------------------------------------\n");
         }
 
         // Next question
-        if (currentQuestion < cardData.length - 1) {
-            currentQuestion++;
+        if (index < cardData.length - 1) {
+            index++;
             ask();
         }else {
             //Game over and start from beginning
@@ -166,3 +175,18 @@ function CreateBasicCard(){
 }
 
 var cardDataCloze = require("./clozeCards.json");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CreateClozeCard();
