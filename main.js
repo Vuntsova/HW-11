@@ -120,8 +120,8 @@ function ask() {
             console.log("Correct answer!");
             console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
             console.log(index);
-            index++;
             correctAnswers++;
+            index++;
         } else {
             console.log("Incorrect answer!");
             console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
@@ -175,17 +175,3 @@ function CreateBasicCard(){
 
 var cardDataCloze = require("./clozeCards.json");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// CreateClozeCard();
