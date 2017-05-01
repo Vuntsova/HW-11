@@ -101,7 +101,7 @@ function CreateClozeCard(){
 //Creating a function for quiz
 
 for (var i = 0; i < cardData.length; i++) {
-    var newCard = new base(cardData[index].front, cardData[index].back);
+    var newCard = new base(cardData[i].front, cardData[i].back);
     cardArray.push(newCard);
 }
 // console.log(newCard);
@@ -175,3 +175,17 @@ function CreateBasicCard(){
 
 var cardDataCloze = require("./clozeCards.json");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CreateClozeCard();
