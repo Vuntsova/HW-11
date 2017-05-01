@@ -5,7 +5,6 @@ var inquirer = require("inquirer");
 var base = require('./base.js');
 var cloze = require('./cloze.js');
 var cardData = require("./BasicCards.json");
-var clozeData = require("./BasicCards.json");
 var fs = require("fs");
 // console.log(cardData);
 
