@@ -1,13 +1,15 @@
-/**
- * Created by webohweb on 4/22/17.
- */
+//inquirer
 var inquirer = require("inquirer");
+//base connection
 var base = require('./base.js');
+
+//cloze connection
 var cloze = require('./cloze.js');
+//BasicCards.json connection
 var cardData = require("./BasicCards.json");
+//FS
 var fs = require("fs");
 // console.log(cardData);
-
 var cardArray = [];
 // Current Question
 var index = 0;
@@ -17,7 +19,6 @@ var correctAnswers = 0;
 var incorrectAnswers = 0;
 // console.log(cardData.length);
 // console.log(cardArray);
-
 
 //Asking the user which game they want to play
 function askUser(){
@@ -76,7 +77,7 @@ function CreateClozeCard(){
     inquirer.prompt([{
         type: "input",
         name: "fullText",
-        message: "What is the question you want to create?(Please include the right answer in the question.)"
+        message: "What is the question you want to create?\n(Your Question needs to contain the right answer.)"
     },{
         type: "input",
         name: "answer",
@@ -93,6 +94,7 @@ function CreateClozeCard(){
         fs.writeFile('./clozeCards.json',newcardDataCloze,function (err) {
             if(err)throw err;
             console.log("Done!");
+            askUser();
         })
 
     })
@@ -117,7 +119,7 @@ function ask() {
     ]).then(function (answers) {
         console.log("\n");
         if (answers.userAnswer === cardArray[index].back) {
-            console.log("Correct answer!");
+            console.log("'"+cardArray[index].back+"'" + " is the correct answer! Great job!" + "\n<><><><><><><><><><><><><><><><><><><><><><>\n");
             // console.log('Your score: ' + "\nCorrect Answers: "+correctAnswers+"\nIncorrect Answers: " + incorrectAnswers + "\n===================\n");
             // // console.log(index);
             correctAnswers++;
@@ -129,7 +131,7 @@ function ask() {
             incorrectAnswers++;
             // Show the correct answer
             console.log('Correct answer is: ' + cardArray[index].back);
-            console.log("<><><><><><><><><><><><><><>\n");
+            console.log("\n<><><><><><><><><><><><><><><><><><><><><><>\n");
         }
 
         // Next question
@@ -172,3 +174,4 @@ function CreateBasicCard(){
 }
 
 var cardDataCloze = require("./clozeCards.json");
+
